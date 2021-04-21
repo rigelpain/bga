@@ -1,0 +1,175 @@
+%transition_all_03s {
+  transition:all .3s ease;
+}
+%backface_visibility_hidden{
+  backface-visibility:hidden;
+  -webkit-backface-visibility:hidden;
+}
+
+*, *:before, *:after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+a {
+  text-decoration: none;
+  &:after {
+    display: inline-block;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    right: 15%;
+    content: "";
+    background-image: url("./img/icon_arrow_white.svg");
+    background-position: 50% top;
+    background-repeat: no-repeat;
+    background-size: 100%;
+    width: 150px;
+    height: 50px;
+    transition-duration: .3s;
+  }
+  &:hover {
+    &:after {
+      right: 5%;
+      transition-duration: .3s;
+    }
+  }
+  &:link {
+    color: white;
+  }
+  &:visited {
+    color: white;
+  }
+}
+
+.swiper-container {
+  width: 80%;
+  height: 100vh;
+  // display:inline-block;
+  // vertical-align:top;
+  float:left;
+  transition:opacity .6s ease, transform .3s ease;
+  &.nav-slider{
+    width:20%;
+    padding-left:5px;
+    .swiper-slide{
+      cursor:pointer;
+      opacity:.4;
+      transition:opacity .3s ease;
+      &.swiper-slide-active{
+        opacity:1;
+      }
+      .content{
+        width:100%;
+        height: 3rem;
+        bottom: 0px;
+        line-height: 2.6rem;
+        .title{
+          font-size:20px;
+          margin-bottom: 0px;
+        }
+      }
+    }
+  }
+  &:hover{
+    .swiper-button-prev,
+    .swiper-button-next{
+      opacity:1;
+      visibility:visible;
+    }
+  }
+  &.loading{
+    opacity:0;
+    visibility:hidden;
+  }
+}
+.swiper-wrapper{
+
+}
+.swiper-slide{
+  overflow: hidden;
+  @extend %backface_visibility_hidden;
+  .slide-bgimg{
+    position:absolute;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    background-position: center;
+    background-size: cover;
+    background-color: #32404A;
+    background-repeat: no-repeat;
+  }
+  .entity-img{
+    display:none;
+  }
+  .content{
+    position:absolute;
+    bottom: 5%;
+    left:0;
+    width:50%;
+    padding: 1% 5% 2%;
+    color:#fff;
+    background-color: rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(7px);
+    .title{
+      font-size:2.6em;
+      font-weight:bold;
+      margin-bottom:10px;
+    }
+    .caption{
+      display:block;
+      font-size:20px;
+      line-height:1.4;
+      // transform:translateX(50px);
+      // opacity:0;
+      transition:opacity .3s ease, transform .7s ease;
+      // margin-bottom: 1.6rem;
+      border-left: 5px solid #FFF;
+      padding-left: 20px;
+      &.show{
+        transform:translateX(0);
+        opacity:1;
+      }
+    }
+  }
+}
+[class^="swiper-button-"]{
+  width:44px;
+  opacity:0;
+  visibility:hidden;
+  @extend %transition_all_03s;
+}
+.swiper-button-prev{
+  transform:translateX(50px);
+}
+.swiper-button-next{
+  transform:translateX(-50px);
+}
+
+
+video {
+  margin: auto;
+  
+}
+
+.swiper-button-prev, .swiper-button-next {
+	transform: rotate(90deg);	/* 元のボタンを90度回転 */
+	-moz-transform: rotate(90deg);
+	-webkit-transform: rotate(90deg);
+	-o-transform: rotate(90deg);
+	-ms-transform: rotate(90deg);
+	margin: 0 auto;	/* 以下、横方向の中央配置用 */
+	left: 50%;
+	margin-left: -22px;
+}
+/* 前ページボタン */
+.swiper-button-prev {
+	top: 5px;		/* 上端からの距離 */
+	bottom: auto;
+}
+/* 次ページボタン */
+.swiper-button-next {
+	bottom: 5px;	/* 下端からの距離 */
+	top: auto;
+}
